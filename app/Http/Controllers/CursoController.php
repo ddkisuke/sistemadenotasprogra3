@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Curso;
 use App\Models\Docente;
 use Illuminate\Http\Request;
+use PDF;
 
 /**
  * Class CursoController
@@ -24,6 +25,19 @@ class CursoController extends Controller
         return view('curso.index', compact('cursos'))
             ->with('i', (request()->input('page', 1) - 1) * $cursos->perPage());
     }
+
+    public function pdf()
+    {
+        $cursos = curso::paginate();
+
+        $pdf = PDF::loadview('curso.pdf',['cursos'=>$cursos]);
+        //$pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
+
+        //return view('alumno.pdf', compact('cursos$cursos'));
+
+    }
+
 
     /**
      * Show the form for creating a new resource.

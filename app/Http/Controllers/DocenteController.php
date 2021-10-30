@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Docente;
 use Illuminate\Http\Request;
-
+use PDF;
 /**
  * Class DocenteController
  * @package App\Http\Controllers
@@ -24,6 +24,18 @@ class DocenteController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $docentes->perPage());
     }
 
+
+    public function pdf()
+    {
+        $docentes = docente::paginate();
+
+        $pdf = PDF::loadview('docente.pdf',['docentes'=>$docentes]);
+        //$pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
+
+        //return view('alumno.pdf', compact('docentes$docentes'));
+
+    }
     /**
      * Show the form for creating a new resource.
      *

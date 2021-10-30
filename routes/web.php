@@ -20,7 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('alumnos/pdf', [App\Http\Controllers\AlumnoController::class, 'pdf'])->name('alumnos.pdf');
-
+Route::get('docentes/pdf', [App\Http\Controllers\DocenteController::class, 'pdf'])->name('docentes.pdf');
+Route::get('cursos/pdf', [App\Http\Controllers\CursoController::class, 'pdf'])->name('cursos.pdf');
+Route::get('notas/pdf', [App\Http\Controllers\NotaController::class, 'pdf'])->name('notas.pdf');
 
 
 route::resource('alumnos', App\Http\Controllers\AlumnoController::class)->middleware('auth');

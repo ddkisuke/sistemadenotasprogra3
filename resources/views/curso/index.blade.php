@@ -14,9 +14,15 @@
 
                             <span id="card_title">
                                 {{ __('Curso') }}
-                            </span>
+                            </span>            
 
                              <div class="float-right">
+
+                             
+                            <a href="{{ route('cursos.pdf') }}" class="btn btn-primary btn-sm "  data-placement="left">
+                                  {{ __('PDF') }}
+                                </a>
+                                &nbsp;
                                 <a href="{{ route('cursos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>

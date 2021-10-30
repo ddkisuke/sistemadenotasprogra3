@@ -7,6 +7,7 @@ use App\Models\Docente;
 use App\Models\Alumno;
 use App\Models\Curso;
 use Illuminate\Http\Request;
+use PDF;
 
 /**
  * Class NotaController
@@ -27,6 +28,17 @@ class NotaController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $notas->perPage());
     }
 
+    public function pdf()
+    {
+        $notas = nota::paginate();
+
+        $pdf = PDF::loadview('nota.pdf',['notas'=>$notas]);
+        //$pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
+
+        //return view('alumno.pdf', compact('notas$notas$notas'));
+
+    }
     /**
      * Show the form for creating a new resource.
      *

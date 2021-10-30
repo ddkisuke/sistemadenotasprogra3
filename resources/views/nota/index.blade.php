@@ -17,6 +17,12 @@
                             </span>
 
                              <div class="float-right">
+
+                             <a href="{{ route('notas.pdf') }}" class="btn btn-primary btn-sm "  data-placement="left">
+                                  {{ __('PDF') }}
+                                </a>
+                                &nbsp;
+
                                 <a href="{{ route('notas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
